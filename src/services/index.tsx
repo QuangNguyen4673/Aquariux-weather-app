@@ -1,7 +1,7 @@
 import { WeatherResponse, CurrentWeather, WeatherForecastResponse, WeatherForecast } from '../types'
 import { mapWeatherData, mapWeatherForecastData } from '../utils'
+const API_KEY = import.meta.env.VITE_API_KEY;
 
-const API_KEY = '75074f8fdc5aa45cb99c9aa9c4ecfdec'
 const OPEN_WEATHER_URL = 'https://api.openweathermap.org/data/2.5'
 
 export const fetchWeather = async (locationName: string): Promise<CurrentWeather> => {

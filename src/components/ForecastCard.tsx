@@ -12,18 +12,11 @@ export default function ForecastCard({ weatherForecast }: { weatherForecast: Wea
           <div className='font-bold text-gray-400'>{date}</div>
           {weatherForecast.list[date].map(item => {
             return <div key={item.dateTime}>
-              <div className="flex items-center gap-4 px-4 py-2">
-                {/* Time */}
-                <div className="font-medium text-base">{item.dateTime}</div>
-
-                {/* Weather Icon */}
+              <div className="grid grid-cols-4 gap-4">
+                <div className="font-medium text-base flex items-center justify-center">{item.dateTime}</div>
                 <WeatherIcon icon={item.icon} size='@2x' />
-
-                {/* Temperature + Description */}
-                <div className="flex flex-col">
-                  <span className="text-gray-400 text-sm">{item.tempRange}</span>
-                  <span className="font-semibold text-sm">{item.desc}</span>
-                </div>
+                <span className="text-gray-400 text-sm flex items-center justify-center">{item.tempRange}</span>
+                <span className="font-semibold text-sm flex items-center justify-center">{item.desc}</span>
               </div>
             </div>
           })}
@@ -32,3 +25,17 @@ export default function ForecastCard({ weatherForecast }: { weatherForecast: Wea
     </CardLayout>
   )
 }
+
+{/* <div className="flex items-center justify-between gap-4 px-4 py-2">
+
+  <div className="font-medium text-base">{item.dateTime}</div>
+
+
+  <WeatherIcon icon={item.icon} size='@2x' />
+
+  <div className="flex items-center justify-between gap-4">
+    <span className="text-gray-400 text-sm">{item.tempRange}</span>
+    <span className="font-semibold text-sm">{item.desc}</span>
+  </div>
+
+</div> */}
