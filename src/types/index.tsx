@@ -9,14 +9,14 @@ export interface CurrentWeather {
   windSpeed: string;
   visibility: string;
   country: string;
-  coord: { lat: number, lon: number }
-};
+  coord: { lat: number; lon: number };
+}
 
 export interface WeatherForecast {
-  cityId: number
-  coord: { lat: number, lon: number }
-  list: Record<string, ForecastItem[]>
-};
+  cityId: number;
+  coord: { lat: number; lon: number };
+  list: Record<string, ForecastItem[]>;
+}
 
 export interface WeatherResponse {
   coord: {
@@ -61,8 +61,7 @@ export interface WeatherResponse {
   id: number;
   name: string;
   cod: number;
-};
-
+}
 
 export interface WeatherForecastResponse {
   cod: string;
@@ -82,7 +81,7 @@ export interface WeatherForecastResponse {
     sunrise: number;
     sunset: number;
   };
-};
+}
 
 export interface ForecastEntry {
   dt: number;
@@ -120,20 +119,18 @@ export interface ForecastEntry {
     pod: string;
   };
   dt_txt: string;
-};
+}
 
 export interface ForecastItem {
   dateTime: string;
   icon: string;
   tempRange: string;
   desc: string;
+  humidity: number;
 }
 
 export interface History {
-  id: number
-  name: string
-  country: string
+  id: number;
+  name: string;
+  country: string;
 }
-
-
-

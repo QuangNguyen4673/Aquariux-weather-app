@@ -1,15 +1,21 @@
-import CardLayout from './CardLayout'
+import CardLayout from "./CardLayout";
 import { CurrentWeather } from "../types";
-import WeatherIcon from './WeatherIcon';
-import { ArrowDownLeftIcon } from '@heroicons/react/24/solid'
+import WeatherIcon from "./WeatherIcon";
+import { ArrowDownLeftIcon } from "@heroicons/react/24/solid";
 
-export default function CurrentWeatherCard({ currentWeather }: { currentWeather: CurrentWeather | null }) {
-  if (!currentWeather) return "No Data" // TODO improve
+export default function CurrentWeatherCard({
+  currentWeather,
+}: {
+  currentWeather: CurrentWeather | null;
+}) {
+  if (!currentWeather) return "No Data"; // TODO improve
 
   return (
-    <CardLayout className='mb-5'>
-      {/* Date */}
-      <div className="text-lg font-semibold mb-4">{currentWeather.dateTime}</div>
+    <CardLayout className="mb-5">
+      <div className="text-lg font-semibold flex justify-between">
+        <span>{currentWeather.dateTime}</span>
+        <span>{currentWeather.name}</span>
+      </div>
 
       {/* Icon + Temp + Description */}
       <div className="flex items-center justify-center gap-10 mb-4">
@@ -28,7 +34,7 @@ export default function CurrentWeatherCard({ currentWeather }: { currentWeather:
         </div>
         <div className="flex flex-col items-center">
           <span className="font-bold">Wind</span>
-          <div className='flex align-middle justify-center'>
+          <div className="flex align-middle justify-center">
             <ArrowDownLeftIcon className="size-3" />
             <div>{currentWeather.windSpeed}</div>
           </div>
@@ -39,5 +45,5 @@ export default function CurrentWeatherCard({ currentWeather }: { currentWeather:
         </div>
       </div>
     </CardLayout>
-  )
+  );
 }
