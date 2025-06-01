@@ -7,6 +7,8 @@ import {
   WeatherResponse,
 } from "../types";
 import moment from "moment";
+import { AES, enc } from "crypto-js";
+const API_KEY = import.meta.env.VITE_API_KEY;
 
 const kelvinToCelsius = (k: number): number => k - 273.15;
 
@@ -72,5 +74,22 @@ const transformForecastEntry = (entry: ForecastEntry): ForecastItem => {
     tempRange: celsius(temp_min) + "/" + celsius(temp_max) + "°C",
     desc: entry.weather[0].description,
     humidity: entry.main.humidity,
+  };
+};
+
+export const secureStorage = () => {
+  const _key = API_KEY;
+
+  const encrypt = (txt: string) => AES.encrypt(txt, _key).toString();
+  const decrypt = (txt: string) => AES.decrypt(txt, _key).toString(enc.Utf8);
+
+  return {
+    setItem(key: string, value: string) {
+      localStorage.setItem(key, encrypt(value));
+    },
+    getItem(key: string) {
+      const data = localStorage.getItem(key);
+      return data ? decrypt(data) : null;
+    },
   };
 };

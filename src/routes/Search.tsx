@@ -3,12 +3,13 @@ import { useNavigate } from "react-router";
 import { fetchWeather } from "../services";
 import { CurrentWeather, History } from "../types";
 import Histories from "../components/History";
-
+import { secureStorage } from "../utils";
+const secureStore = secureStorage()
 export default function Search() {
-  const stored = localStorage.getItem("histories");
+  const localHistories = secureStore.getItem("histories");
   const [locationName, setLocationName] = useState("");
   const [histories, setHistories] = useState<History[]>(
-    stored ? JSON.parse(stored) : [],
+    localHistories ? JSON.parse(localHistories) : [],
   );
   const [error, setError] = useState("");
   const navigate = useNavigate();
@@ -24,7 +25,7 @@ export default function Search() {
       const isExist = histories.find((his) => his.id === id);
       if (!isExist) {
         const newHistories = [...histories, { name, country, id }];
-        localStorage.setItem("histories", JSON.stringify(newHistories));
+        secureStore.setItem("histories", JSON.stringify(newHistories));
         setHistories(newHistories);
       }
       setLocationName("");
@@ -40,9 +41,11 @@ export default function Search() {
 
   const handleDelete = (id: number) => {
     const newHistories = histories.filter((his) => his.id !== id);
-    localStorage.setItem("histories", JSON.stringify(newHistories));
+    secureStore.setItem("histories", JSON.stringify(newHistories));
     setHistories(newHistories);
   };
+  console.log(histories);
+
 
   return (
     <div className="flex flex-col gap-y-5 w-full max-w-md mx-auto">

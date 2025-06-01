@@ -6,11 +6,8 @@ import CurrentWeatherCard from "../components/CurrentWeatherCard";
 import ForecastCard from "../components/ForecastCard";
 
 export default function Home() {
-  const [currentWeather, setCurrentWeather] = useState<CurrentWeather | null>(
-    null,
-  );
-  const [weatherForecast, setWeatherForecast] =
-    useState<WeatherForecast | null>(null);
+  const [currentWeather, setCurrentWeather] = useState<CurrentWeather | null>(null);
+  const [weatherForecast, setWeatherForecast] = useState<WeatherForecast | null>(null);
   const location = useLocation();
 
   // get weather then get forecast
