@@ -9,6 +9,7 @@ const router = createBrowserRouter([
   { path: "/search", element: <Search /> },
 ]);
 
+
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <RouterProvider router={router} />

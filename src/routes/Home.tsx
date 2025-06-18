@@ -45,11 +45,9 @@ export default function Home() {
   useEffect(() => {
     const newCurrentWeather: CurrentWeather = location.state?.currentWeather;
     if (newCurrentWeather) {
-      // search
       setCurrentWeather(newCurrentWeather);
       getForeCast(newCurrentWeather.coord);
     } else {
-      // init
       getHomeData("singapore");
     }
   }, [location.state?.currentWeather, getHomeData]);
