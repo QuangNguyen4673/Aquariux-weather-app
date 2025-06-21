@@ -25,18 +25,18 @@ A responsive and modern weather forecast web app built with React and TypeScript
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/your-username/weather-forecast-app.git
+git clone https://github.com/QuangNguyen4673/Weather-Forecast.git
 cd weather-forecast-app
 
 # 2. Install dependencies
-npm install
+pnpm install
 
 # 3. Set up your environment
 cp .env.example .env
 # Add your OpenWeatherMap API key in the .env file
 
 # 4. Start the development server
-npm run d
+pnpm run dev
 ```
 
 ## Contributing
